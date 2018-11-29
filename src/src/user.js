@@ -1,8 +1,8 @@
 const express=require('express');
 const Router=express.Router();
 //数据模型引入
-const User=require('../mongo/model/user.js')
-const nodeEmail=require('./nodeEmail.js')
+const User=require('./mongo/model/user.js')
+// const nodeEmail=require('./nodeEmail.js')
 //失去光标时,用户名验证
 Router.post('/yz',(req,res)=>{
   let us=req.body.us;

@@ -19,7 +19,8 @@ export default{
         val:"",
         pas:"",
         yhm:"",
-        pass:""
+        pass:"",
+        jieko:[]
 
     }
   },
@@ -59,7 +60,8 @@ export default{
         this.$router.push("/my/reg");
       }
     },
-} 
+    
+};
 
 </script>
 <style lang="less" scoped>

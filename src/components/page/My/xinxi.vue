@@ -32,8 +32,11 @@ export default{
     else if(title!=null){
       this.state=title;
     }
+    //商品信息
+      this.jieko = this.$store.state.shuzu;
+      console.log(this.jieko);
   }
-}   
+};   
 
 </script>
 <style lang="less" scoped>

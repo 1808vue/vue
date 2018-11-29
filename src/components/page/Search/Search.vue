@@ -92,29 +92,43 @@ export default{
                 // console.log(res);
                 let urll=[];
                 let shuJu = res.data.UnifyGoodsList;
-                for(let i=0;i<shuJu.length;i++){
-                    // console.log(shuJu[i].CommentVolume);
-                    if(shuJu[i].PicUrl.indexOf("{type}") !=-1){
-                        let rrr = shuJu[i].PicUrl.replace("{type}","160x160");
-                        urll.push(rrr);
-                        shuJu[i].PicUrl = rrr;
-                    }else if(shuJu[i].PicUrl.indexOf("{0}") !=-1){
-                        let rrr = shuJu[i].PicUrl.replace("{0}","normal");
-                        urll.push(rrr);
-                        shuJu[i].PicUrl = rrr;
-                    }
+                if(shuJu){
+                    for(let i=0;i<shuJu.length;i++){
+                        // console.log(shuJu[i].CommentVolume);
+                        if(shuJu[i].PicUrl.indexOf("{type}") !=-1){
+                            let rrr = shuJu[i].PicUrl.replace("{type}","160x160");
+                            urll.push(rrr);
+                            shuJu[i].PicUrl = rrr;
+                        }else if(shuJu[i].PicUrl.indexOf("{0}") !=-1){
+                            let rrr = shuJu[i].PicUrl.replace("{0}","normal");
+                            urll.push(rrr);
+                            shuJu[i].PicUrl = rrr;
+                        }
 
+                    }
+                    this.shuJU=shuJu;
+                    // console.log(shuJu);
+                    toast.close();
+                    Toast({
+                      message: '已经到底了',
+                      // iconClass: "fa fa-cog fa-spin",
+                      position:'bottom',
+                      duration: 1000
+                    });
+                    return false;
+                }else{
+                    toast.close();
+                    Toast({
+                      message: '商品空空如也！',
+                      // iconClass: "fa fa-cog fa-spin",
+                      position:'center',
+                      duration: 1000
+                    });
+                    return false;
                 }
-                this.shuJU=shuJu;
-                // console.log(shuJu);
-                toast.close();
-                Toast({
-                  message: '已经到底了',
-                  // iconClass: "fa fa-cog fa-spin",
-                  position:'bottom',
-                  duration: 1000
-                });
-                return false;
+                
+                
+                
             })
             .catch((err)=>{
                 console.log(err)

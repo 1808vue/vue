@@ -131,7 +131,7 @@ export default{
         tiaozhuan(){
             //把数据存到vuex上面
             // console.log(id);
-            let kao = {price:this.price,title:this.hua2,img:this.shuJU[0].url,qty:this.ll};
+            let kao = {price:this.price,title:this.hua2,img:this.shuJU[0].url,qty:this.ll,zhuangtai:true};
             // console.log(kao);
             let jieko = this.$store.state.shuzu;
             jieko.push(kao);

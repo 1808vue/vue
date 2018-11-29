@@ -11,7 +11,7 @@
         <div class="shang" ref="shang">
             <div class="ping" v-for="(item,index) in jieko" :key="index">
                 <!-- :checked="hao" -->
-                <input type="checkbox" class="zhuo" ref="zhuo"  @click="Zhuo($event)" :checked="hao">
+                <input type="checkbox" class="zhuo" ref="zhuo"  @click="Zhuo(index)" :checked="item.zhuangtai">
                 <img :src="item.img" alt="">
                 <div class="item_info ">
                     <h3 class="title">
@@ -19,20 +19,20 @@
                     </h3>
                     <div class="cart_p_num">
                         <div class="cart_input">
-                            <a class="subbtn" ref="Subbtn" @click="Jian($event)">-</a>
+                            <a class="subbtn" ref="Subbtn" @click="Jian($event,index)">-</a>
                             <!--
                                 data-Max：最大可卖量
                                 data-XG：限购
                                 data-QS：起售数量
                                 -->
-                            <input type="text" id="ProductNum" ref="ProductNum" :value="item.qty" data-max="3" data-xg="0" data-qs="1" data-runnum="1" @change="neiRong($event)">
-                            <a class="addbtn" ref="Addbtn" @click="Jia($event)">+</a>
+                            <input type="text" id="ProductNum" ref="ProductNum" :value="item.qty" data-max="3" data-xg="0" data-qs="1" data-runnum="1" @change="neiRong($event,index)">
+                            <a class="addbtn" ref="Addbtn" @click="Jia($event,index)">+</a>
                             
                         </div>
                     </div>                
                 </div>
                 <div class="price">
-                    ￥<span>{{item.price}}</span>
+                    ￥<span>{{(item.price-0)*(item.qty)}}</span>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
                 <p class="da">总计：￥<span ref="zong">0.00</span></p>
                 <p class="xiao">(不含运费、综合税)</p>
             </div>
-            <div class="Bottom">去结算</div>
+            <div class="Bottom"  @click='tiaozhuan'>去结算</div>
             
         </div>
     </div>
@@ -73,8 +73,9 @@ export default{
             Input:[],
             All:[],
             hao:false,
-            Hao:false,
-            jieko:[]
+            Hao:true,
+            jieko:[],
+            jiage:[]
         }
     },
     methods:{
@@ -85,7 +86,7 @@ export default{
         // # 获得点击元素的父级元素
         // e.currentTarget.parentElement
         //点击减
-        Jian(event){
+        Jian(event,index){
             let el = event.currentTarget.nextElementSibling;
             this.zhi = el.value;
 
@@ -93,6 +94,8 @@ export default{
             if(this.zhi>1){
                 this.zhi-=1;
                 el.value = this.zhi;
+                this.jieko[index].qty = this.zhi;
+                this.jiage[index]=(this.zhi-0)*this.jieko[index].price;
             }else{
                 event.currentTarget.classList.add("cart_p_disable");
             }
@@ -100,11 +103,13 @@ export default{
             
         },
         //点击加
-        Jia(event){
+        Jia(event,index){
             let el = event.currentTarget.previousElementSibling;
             this.zhi = el.value-0;
             this.zhi+=1;
             el.value = this.zhi;
+            this.jieko[index].qty = this.zhi;
+            this.jiage[index]=(this.zhi-0)*this.jieko[index].price;
             event.currentTarget.previousElementSibling.previousElementSibling.classList.remove("cart_p_disable");
             this.panduan1();
             // this.ll = this.$refs.ProductNum.value -0;
@@ -112,103 +117,149 @@ export default{
             // this.$refs.ProductNum.value = this.ll;
         },
         //input内容改变
-        neiRong(event){
+        neiRong(event,index){
             let el = event.currentTarget;
             if(el.value == ''||el.value <1){
                 el.value = this.zhi;
+            }else{
+                this.jieko[index].qty = el.value;
+                this.jiage[index]=(this.zhi-0)*this.jieko[index].price;
             }
+            
             this.panduan1();
         },
         //全选
         all(event){
-            let el = event.currentTarget;
-            this.Input = this.$refs.zhuo;
+            // let el = event.currentTarget;
+            // this.Input = this.$refs.zhuo;
             this.Hao =!this.Hao;
-            this.hao = el.checked;
-
-            //下面的没用
-            if(el.checked){
-                // this.Input.setAttribute("checked",true);
-                for(var i=0;i<this.Input.length;i++){
-                    if(!this.Input[i].hasAttribute("checked")){
-                        this.Input[i].setAttribute("checked",true);
-                    }
-                    this.panduan1();
-
+            // this.hao = el.checked;
+            if(this.Hao){
+                for(let i=0;i<this.jieko.length;i++){
+                    this.jieko[i].zhuangtai=true;
                 }
             }else{
-                for(var i=0;i<this.Input.length;i++){
-                    this.Input[i].removeAttribute("checked");
-                this.panduan1();
-
+                for(let i=0;i<this.jieko.length;i++){
+                    this.jieko[i].zhuangtai=false;
                 }
             }
+            this.panduan1();
+            
+
+            //下面的没用
+            // if(el.checked){
+            //     // this.Input.setAttribute("checked",true);
+            //     for(var i=0;i<this.Input.length;i++){
+            //         if(!this.Input[i].hasAttribute("checked")){
+            //             this.Input[i].setAttribute("checked",true);
+            //         }
+            //         this.panduan1();
+
+            //     }
+            // }else{
+            //     for(var i=0;i<this.Input.length;i++){
+            //         this.Input[i].removeAttribute("checked");
+            //     this.panduan1();
+
+            //     }
+            // }
         },
         //点击input
-        Zhuo(event){
-            let el = event.currentTarget;
+        Zhuo(index){
+            // let el = event.currentTarget;
+            this.jieko[index].zhuangtai = !this.jieko[index].zhuangtai;
             this.panduan1();
-                this.panduan();
+            this.panduan();
 
-            el.setAttribute("checked",!this.hao);
-            if(el.checked){
-                // console.log(999);
-            }
+            // el.setAttribute("checked",!this.hao);
+            // if(el.checked){
+            //     // console.log(999);
+            // }
             // let timer = setTimeout(()=>{
             //     clearTimeout(timer);
             // },1000)
         },
         //删除
         shan(){
-            this.Input = this.$refs.zhuo;
-            for(let i=0;i<this.Input.length;i++){
-                if(this.Input[i].checked){
-                    console.log(this.Input[i].parentElement);
-                    this.$refs.shang.removeChild(this.Input[i].parentElement);
+            // this.Input = this.$refs.zhuo;
+            // for(let i=0;i<this.Input.length;i++){
+            //     if(this.Input[i].checked){
+            //         console.log(this.Input[i].parentElement);
+            //         this.$refs.shang.removeChild(this.Input[i].parentElement);
+            //     }
+            // }
+            // console.log(this.Input.length);
+            let ztai = [];
+            for(let i=0;i<this.jieko.length;i++){
+                if(this.jieko[i].zhuangtai){
+                    this.jieko.splice(i,1);
                 }
             }
-            console.log(this.Input.length);
+            this.panduan1();
+            this.panduan();
         },
         //点击加判断是否所有的input都选中
         panduan(){
-            this.Input = this.$refs.zhuo;
-            let hao1 = [];
-            for(let i=0;i<this.Input.length;i++){
-                if(this.Input[i].checked){
-                    hao1.push(this.Input[i]);
+            // this.Input = this.$refs.zhuo;
+            // let hao1 = [];
+            // for(let i=0;i<this.Input.length;i++){
+            //     if(this.Input[i].checked){
+            //         hao1.push(this.Input[i]);
+            //     }
+            // }
+            // let len = hao1.length;
+            // this.All = this.$refs.all;
+            // if(len==this.Input.length){
+            //     this.Hao =true;
+            // }else{
+            //     this.Hao =false;
+            // }
+            let ztai = [];
+            for(let i=0;i<this.jieko.length;i++){
+                if(this.jieko[i].zhuangtai){
+                    ztai.push(this.jieko[i].zhuangtai);
                 }
             }
-            let len = hao1.length;
-            this.All = this.$refs.all;
-            if(len==this.Input.length){
+            if(this.jieko.length==ztai.length){
                 this.Hao =true;
             }else{
                 this.Hao =false;
             }
         },
         panduan1(){
-            this.Input = this.$refs.zhuo;
+            // this.Input = this.$refs.zhuo;
             let hao2 = 0;
-            for(let i=0;i<this.Input.length;i++){
-                if(this.Input[i].checked){
-                    let jia = this.Input[i].nextElementSibling.nextElementSibling.nextElementSibling.children[0].innerHTML;
-                    let ge = this.Input[i].nextElementSibling.nextElementSibling.children[1].children[0].children[1].value;
-                    hao2+=(jia*ge-0);
+            let ztai = [];
+            for(let i=0;i<this.jieko.length;i++){
+                if(this.jieko[i].zhuangtai){
+                    hao2+=this.jiage[i];
                 }
             }
+            // console.log(hao2);
             this.$refs.zong.innerHTML=hao2;
             this.$refs.zong1.innerHTML=hao2;
+        },
+        tiaozhuan(){
+            // console.log(this.jieko);
+            this.$store.commit("shuju",this.jieko)
+            this.$router.push({path:`/my`});
         }
+    },
+    mounted(){
+        this.panduan1();
     },
     created(){
         this.jieko = this.$store.state.shuzu;
+        for(let i=0;i<this.jieko.length;i++){
+            this.jiage.push(this.jieko[i].price);
+        }
         // console.log(this.jieko);
-    var storage=window.localStorage //获取storage对象。
-    var title=storage.getItem("us")
-    if(title==null){
-        alert("请先登录账号")
-    this.$router.push("/my/login")
-    }
+        // var storage=window.localStorage //获取storage对象。
+        // var title=storage.getItem("us")
+        // if(title==null){
+        //     alert("请先登录账号")
+        //     this.$router.push("/my/login")
+        // }
     }
   
 };
