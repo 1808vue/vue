@@ -14,8 +14,6 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
 
-
-
 import Vuex from 'vuex';
 Vue.use(Vuex);
 const store = new Vuex.Store({

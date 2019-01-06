@@ -72,7 +72,7 @@ export default{
             zhi:1,
             Input:[],
             All:[],
-            hao:false,
+            // hao:false,
             Hao:true,
             jieko:[],
             jiage:[]

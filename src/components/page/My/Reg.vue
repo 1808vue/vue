@@ -28,6 +28,7 @@ export default{
     },
     methods:{
         yz(){
+          //数据格式改变
           var params = new URLSearchParams();
             params.append('us',this.val);
             params.append('ps',this.pas);

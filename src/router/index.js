@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
  Vue.use(VueRouter)
 
 import Home  from '../components/page/Home/Home.vue'
+import footer  from '../components/common/footer.vue'
 import Car  from '../components/page/Car/Car.vue'
 import Classify  from '../components/page/Classify/Classify.vue'
 import Search  from '../components/page/Search/Search.vue'
@@ -17,6 +18,7 @@ import Xinxi  from '../components/page/My/xinxi'
 const routes = [
 { path: '/', component: Home ,name:'home'},
   { path: '/home', component: Home ,name:'home'},
+  { path: '/footer', component: footer ,name:'footer'},
   { path: '/car', component: Car ,name:'car'},
   { path: '/classify', component: Classify ,name:'classify'},
   { path: '/search/:id', component: Search ,name:'search'},
