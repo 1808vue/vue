@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 
 import Home  from '../components/page/Home/Home.vue'
 import footer  from '../components/common/footer.vue'
+import footer1  from '../components/common/footer1.vue'
 import Car  from '../components/page/Car/Car.vue'
 import Classify  from '../components/page/Classify/Classify.vue'
 import Search  from '../components/page/Search/Search.vue'
@@ -19,6 +20,7 @@ const routes = [
 { path: '/', component: Home ,name:'home'},
   { path: '/home', component: Home ,name:'home'},
   { path: '/footer', component: footer ,name:'footer'},
+  { path: '/footer1', component: footer1 ,name:'footer1'},
   { path: '/car', component: Car ,name:'car'},
   { path: '/classify', component: Classify ,name:'classify'},
   { path: '/search/:id', component: Search ,name:'search'},
