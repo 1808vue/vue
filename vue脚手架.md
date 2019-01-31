@@ -188,3 +188,34 @@ this.$axios.post(this.API().login,params)
 //this.API().login相当于http://192.168.0.43:8080/sys/auth/login
 ```
 
+
+
+
+
+###### 打包上线后部分css不出来
+
+首先注释掉webpack.prod.conf.js中下面的代码 
+
+```
+new OptimizeCSSPlugin({
+  cssProcessorOptions: config.build.productionSourceMap
+    ? { safe: true, map: { inline: false } }
+    : { safe: true }
+}),
+
+```
+
+然后在utils.js中添加， minimize:true 
+
+```
+const cssLoader = {
+   loader: 'css-loader',
+   options: {
+     sourceMap: options.sourceMap,
+     minimize:true
+   }
+ }
+
+```
+
+然后重新打包传到线上 
