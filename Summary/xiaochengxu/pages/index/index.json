@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "xsearch": "/components/search/search",
+    "xpanel": "/components/panel/panel"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/wx/wx",
+    "pages/message/message",
+    "pages/search/search",
+    "pages/my/my",
+    "components/pannel/pannel",
+    "components/search/search"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#58bc58",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "音乐",
+    "navigationStyle": "default",
+    "backgroundColor": "#58bc58",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "position": "bottom",
+    "color": "#666666",
+    "selectedColor": "#58bc58",
+    "backgroundColor": "#66666",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "微信"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "通讯录"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/wx/wx",
+        "text": "我的",
+        "iconPath": "/icons/my.png",
+        "selectedIconPath": "/icons/chat.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "加油"
+      }
+    ]
+  }
+}

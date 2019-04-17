@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+        // 步骤:
+      
+     window.onload = function(){
+      // 1: 定义2D画布并设置线条样式：
+        
+
+
+     // 通过ID获取DOM中canvas元素
+     var canvas = document.getElementById("myCanvas");
+     // 使用画布对象的getContext()方法声明一个2D上下文
+     var context = canvas.getContext("2d");
+     // 设置线条宽度为10像素
+     ontext.lineWidth = 10;
+     // 设置线条颜色为蓝色
+     context.strokeStyle = "blue";
+     // 2.  定位画布上下文并绘制直线：
+      // 定位绘制光标
+      context.moveTo(50, canvas.height - 50);
+     // 绘制直线
+     context.lineTo(canvas.width - 50, 50);
+     // 通过描边颜色让线条可见
+     context.stroke();
+};
+
+        </script>
+    </head>
+    <body>
+     <canvas id="myCanvas" width="600" height="250" style="border:1px solid black;">
+     </canvas>
+    </body>
+</html>

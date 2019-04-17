@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./animate.css">
+</head>
+<style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin: 0px auto; 
+    }
+   
+</style>
+<body>
+    
+    <div id="app">
+        <aaa></aaa>
+    </div>
+
+
+    <template id="aaa">
+        <div>   
+           <button @click = "isShow = !isShow">toggle</button>
+           
+<!--            <transition 
+                enter-active-class = "animated rotateIn"
+                leave-active-class = "animated rotateOut"
+            >         
+                <div v-if="isShow" class="box"></div> 
+                 <div v-if="isShow" class="box"></div> 
+                  <div v-if="isShow" class="box"></div>      
+            </transition> -->
+                         
+            <transition-group 
+                enter-active-class = "animated rotateIn"
+                leave-active-class = "animated rotateOut"
+            >         
+                <div key='1' v-if="isShow" class="box"></div> 
+                 <div key='2' v-if="isShow" class="box"></div> 
+                  <div key='3' v-if="isShow" class="box"></div>      
+            </transition-group>
+        </div>
+    </template>
+
+
+
+
+
+</body>
+<script src="../../../vue.js"></script>
+
+<script>
+    // 如果是一组元素做动画的时候，需要使用transition-group，并且需要有key
+    // 推荐大家使用animate.css 动画库
+
+    Vue.component("aaa",{
+        template:"#aaa",
+        data () {
+            return {
+                isShow: true
+            }
+        }
+    })
+
+    new Vue({
+        el:"#app"
+    })
+
+
+    
+
+
+
+</script>
+</html>

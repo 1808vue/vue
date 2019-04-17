@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <!-- <Banner></Banner>
-     
+    <File></File>
     <Homelist></Homelist> -->
     <!-- <keep-alive> -->
       <router-view></router-view>
@@ -15,10 +15,12 @@
 import Header from "./components/common/header.vue"
 import Banner from "./components/page/Home/Banner.vue"
 import Homelist from "./components/page/Home/HomeList.vue"
+import File from "./components/page/File/file.vue"
+
 export default {
   name: 'App',
   components: {
-    Header,Banner,Homelist
+    Header,Banner,Homelist,File
   }
 };
 </script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            #click{width:100px;height:100px;background:red;}  
+            #kuang{
+                background:skyblue;
+                width:300px;
+                height:300px;
+                display:none;
+                margin:0 auto;
+                border:2px solid yellow;
+
+            }
+
+        </style>
+    </head>
+    <body>
+    <!-- 弹窗 -->
+        <div id="click" onclick="tank()">
+            
+        </div>
+        <div id="kuang">
+           <ul>
+                <li>你要加油哦</li>
+                <li>你要加油哦</li>
+                <li>你要加油哦</li>
+            </ul> 
+        </div>
+    <script type="text/javascript">
+    var show=true;
+    var click=document.getElementById("click");
+    var kuang=document.getElementById("kuang");
+
+        // 一:函数的点击并执行的第一种写法
+       // click.onclick=function(){
+       //  if(show==true){
+       //      kuang.style.display="block"
+       //      show=false
+       //  }else if(show==false){
+       //      kuang.style.display="none";
+       //      show=true;
+       //  }
+       // } 
+     
+           
+              
+        // click.onclick=function(){
+        //     kuang.style.display=show?"none":"inline-block";
+        //     show=!show;
+        // }
+       
+//         二:事件驱动:
+//        格式：元素.事件 = 函数名;
+          // buton.onclick = sum;
+          
+       // function tank(){
+       //      kuang.style.display=show?"none":"inline-block";
+       //      show=!show;
+
+       // }
+       // click.onclick=tank
+        
+       // 三:手动调用的方式执行函数  函数名();
+      function tank(){
+        kuang.style.display=show?"none":"inline-block";
+            show=!show;
+      }
+
+    </script>
+    </body>
+</html>

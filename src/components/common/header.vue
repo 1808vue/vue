@@ -30,6 +30,10 @@
         <i class="fa fa-user-md fa-2x" aria-hidden="true"></i>
         {{navlist[3].name}}
      </li>
+     <li class="menu1" @click="tiaozhuan(navlist[4].path)">
+        <i class="fa fa-user-md fa-2x" aria-hidden="true"></i>
+        {{navlist[4].name}}
+     </li>
    </ul>
   </div>
 
@@ -48,7 +52,7 @@ export default {
   data(){
     return {
         datas:"母婴之家",
-        navlist:[{name:'首页',path:'/home'},{name:'分类',path:'/classify'},{name:'购物车',path:'/car'},{name:'我的',path:'/my'}],
+        navlist:[{name:'首页',path:'/home'},{name:'分类',path:'/classify'},{name:'购物车',path:'/car'},{name:'我的',path:'/my'},{name:'文件',path:'/file'}],
         list:'/home'
     }
   },

@@ -14,6 +14,9 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
 
+import { Upload} from 'element-ui';
+Vue.component(Upload.name, Upload);
+import 'element-ui/lib/theme-chalk/index.css';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 const store = new Vuex.Store({

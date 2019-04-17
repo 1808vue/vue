@@ -89,6 +89,7 @@ export default{
         Jian(event,index){
             let el = event.currentTarget.nextElementSibling;
             this.zhi = el.value;
+			console.log(el.value,el)
 
             // this.ll = this.$refs.ProductNum.value;
             if(this.zhi>1){

@@ -1,0 +1,12 @@
+步骤:(1)先有公共组件并且公共组件有props属性，
+如下所示: 
+props: {
+    title: {
+      type: String,
+      default: '标题'
+    }
+  },
+  （2）
+  在另一个组件中引用如index.vue所示
+  
+  <Header title="餐食预定" />

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./animate.css">
+</head>
+<style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin: 0px auto; 
+    }
+   
+</style>
+<body>
+    
+    <div id="app">
+        <aaa></aaa>
+    </div>
+
+
+    <template id="aaa">
+        <div>   
+           <button @click = "component=component==='comb'?'comc':'comb'">toggle</button>
+                   
+            <transition 
+                enter-active-class = "animated slideInLeft"
+                leave-active-class = "animated slideOutRight"
+                mode="out-in"
+            >         
+                <component :is='component'></component>      
+            </transition>
+                        <!--切换2个组件  -->
+        </div>
+    </template>
+
+
+
+
+
+</body>
+<script src="../../../vue.js"></script>
+
+<script>
+    Vue.component("comb",{
+            template:"<h1>hello  vue</h1>",
+        
+        })
+    Vue.component("comc",{
+        template:"<h1>hello  world</h1>",
+    
+    })
+    Vue.component("aaa",{
+        template:"#aaa",
+        data () {
+            return {
+                component: 'comb'
+            }
+        }
+    })
+
+    new Vue({
+        el:"#app"
+    })
+
+
+    
+
+
+
+</script>
+</html>

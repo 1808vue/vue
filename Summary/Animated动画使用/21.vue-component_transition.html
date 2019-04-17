@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+    /* // abc-enter abc-enter-to abc-enter-active */
+    /* 进入的时候 */
+    .hehe-enter{
+        opacity: 0;
+    }
+    .hehe-enter-to{
+        opacity:1;
+    }
+    .hehe-enter-active{
+        transition: all  2s;
+    }
+   .hehe-leave{
+        opacity: 1;
+    }
+    .hehe-leave-to{
+        opacity:0;
+    }
+    .hehe-leave-active{
+        transition: all  2s;
+    }
+</style>
+<body>
+
+    <div id="app">
+        <aaa></aaa>
+    </div>
+
+
+    <template id="aaa">
+        <div>   
+           <button @click = "isShow = !isShow">toggle</button>
+           
+            <transition  name='hehe'>   
+                <div v-if="isShow" class="box"></div>
+            </transition>
+ 
+              
+        </div>
+    </template>
+
+
+
+
+
+</body>
+<script src="../../../vue.js"></script>
+
+<script>
+
+    //transition组件主要的作用就是可以给元素在某些特定的时刻添加上特定的类名
+    //当入场的时候，会马上的为元素添加上 v-enter类名，然后在下一帧切换成v-enter-to类名，如果这两个类名的属性不一样，元素就会经力属性变化的过程，而在整个变化过程总v-enter-active一直存在，如果这个类名上有css的transition过渡属性，元素的属性变化就会以过渡的情况存在
+
+    Vue.component("aaa",{
+        template:"#aaa",
+        data () {
+            return {
+                isShow: true
+            }
+        }
+    })
+
+    new Vue({
+        el:"#app"
+    })
+
+
+    
+
+
+
+</script>
+</html>

@@ -1,0 +1,32 @@
+<html> 
+<head><title></title> 
+<style type="text/css"> 
+.redBack{}{ 
+color:white; 
+background:red; 
+border:2px solid black; 
+} 
+</style> 
+<script type="text/javascript" src="./jquery.js"></script> 
+<script language="javascript"> 
+$(document).ready(function(){ 
+$('input').focus(function(){ 
+$(this).addClass('redBack'); 
+//alert("hello"); 
+}); 
+
+$('input').blur(function(){ 
+$(this).removeClass('redBack'); 
+}); 
+}); 
+</script> 
+</head> 
+<body> 
+<input type="text" value="hello,shanzhu" id="myText"> 
+<input type="text" value="hello,shanzhu" id="myText2"> 
+<input type="text" value="hello,shanzhu" id="myText3"> 
+<input type="text" value="hello,shanzhu" id="myText4"> 
+<input type="text" value="hello,shanzhu" id="myText5"> 
+<input type="text" value="hello,shanzhu" id="myText6"> 
+</body> 
+</html> 

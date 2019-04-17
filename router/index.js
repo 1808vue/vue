@@ -12,6 +12,7 @@ import Cinena  from '../components/pages/Cinena/Cinena'
 import Mall  from '../components/pages/Mall/Mall'
 import Myme  from '../components/pages/Myme/Myme'
 import SalesCard  from '../components/pages/SalesCard/SalesCard'
+import File  from '../components/pages/File/file'
 
 
 const router = new VueRouter({
@@ -20,6 +21,7 @@ const router = new VueRouter({
   { path: '/movie', component: Movie  ,name:'movie' },//电影
   { path: '/cinena', component: Cinena  ,name:'cinena' },//影院
   { path: '/mall', component: Mall  ,name:'mall' },//商城
+   { path: '/file', component: File ,name:'file'},//首页
   { path: '/myme', component: Myme  ,name:'myme' },//我的
   { path: '/salesCard', component: SalesCard  ,name:'salesCard' },//卖座卡
   ]
